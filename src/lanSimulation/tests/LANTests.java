@@ -248,8 +248,14 @@ the tests should work as expected.
 	public void test() {
 	    Network network = Network.DefaultExample();
 	    StringWriter report = new StringWriter(100);
-	    network.requestWorkstationPrintsDocument("UnknownWorkstation",
-					      "does not matter", "does not matter", report);
+	    try {
+	    	network.requestWorkstationPrintsDocument("UnknownWorkstation",
+				      "does not matter", "does not matter", report);
+	    	fail("Exception not thrown");
+	    }catch(AssertionError e){
+	    	
+	    }
+	    
 	}
 
   
