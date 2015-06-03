@@ -77,14 +77,14 @@ Construct a <em>Packet</em> with given #message, #origin and #receiver.
 							endPos = message_.indexOf(".", startPos + 6);
 							if (endPos < 0) {endPos = message_.length();};
 							title = message_.substring(startPos + 6, endPos);};
-							network.accounting(report, author, title);
+							accounting(report, author, title);
 							report.write(">>> Postscript job delivered.\n\n");
 							report.flush();
 				} else {
 					title = "ASCII DOCUMENT";
 					if (message_.length() >= 16) {
 						author = message_.substring(8, 16);};
-						network.accounting(report, author, title);
+						accounting(report, author, title);
 						report.write(">>> ASCII Print job delivered.\n\n");
 						report.flush();
 				};
@@ -101,6 +101,14 @@ Construct a <em>Packet</em> with given #message, #origin and #receiver.
 			};
 			return false;
 		}
+	}
+	private void accounting(Writer report, String author, String title)
+			throws IOException {
+		report.write("\tAccounting -- author = '");
+		report.write(author);
+		report.write("' -- title = '");
+		report.write(title);
+		report.write("'\n");
 	}
 
 }
