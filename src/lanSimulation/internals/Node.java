@@ -46,7 +46,7 @@ public class Node {
 	/**
 	 * Holds the type of the Node.
 	 */
-	public byte type_;
+	
 	/**
 	 * Holds the name of the Node.
 	 */
@@ -64,9 +64,8 @@ public class Node {
 	 * <strong>Precondition:</strong> (type >= NODE) & (type <= PRINTER);
 	 * </p>
 	 */
-	public Node(byte type, String name) {
-		assert (type >= NODE) & (type <= PRINTER);
-		type_ = type;
+	public Node(String name) {
+
 		name_ = name;
 		nextNode_ = null;
 	}
@@ -78,13 +77,13 @@ public class Node {
 	 * <strong>Precondition:</strong> (type >= NODE) & (type <= PRINTER);
 	 * </p>
 	 */
+	
 	public Node(byte type, String name, Node nextNode) {
 		assert (type >= NODE) & (type <= PRINTER);
-		type_ = type;
 		name_ = name;
 		nextNode_ = nextNode;
 	}
-
+	
 	public void printOn(StringBuffer buf, Network network) {
 
 		buf.append("Node ");
@@ -111,6 +110,10 @@ public class Node {
 		report.write(name_);
 		report.write("' passes packet on.\n");
 		report.flush();
+	}
+	
+	public byte getType(){
+		return Node.NODE;
 	}
 
 }
